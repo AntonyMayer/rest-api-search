@@ -1,14 +1,21 @@
 .App {
+    padding: 1rem;
+
+    @include breakpoint('md') {
+        margin: 2rem auto;
+        max-width: 60rem; // 960px
+    }
+
     &__header {
-        padding: 1rem;
+        margin-bottom: 2rem;
 
         @include breakpoint('md') {
-            padding: 2rem;
+            display: inline-block;
         }
     }
 
     &__title {
         @extend %font-large;
-        text-align: center;
+        opacity: .7;
     }
 }
