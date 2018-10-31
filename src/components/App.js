@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import './App.scss';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <header className="App__header">
-          Header
+          Search UI
         </header>
       </div>
     );

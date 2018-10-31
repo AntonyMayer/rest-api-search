@@ -1,0 +1,16 @@
+/************************
+ * Extremely simple breakpoint mixin
+ * @param {string} $breakpoint - accepts values: md, lg
+ ************************/
+
+@mixin breakpoint($breakpoint) {
+    @if $breakpoint == md {
+        @media (max-width: $md) {
+            @content;
+        }
+    } @else if $breakpoint == lg {
+        @media (min-width: $lg) {
+            @content;
+        }
+    }
+}
