@@ -3,6 +3,7 @@ html {
 }
 
 body {
+    @extend %font-regular;
     background: linear-gradient(to right, $color-green, $color-blue);
     color: $color-white;
     font-family: Helvetica, Arial;

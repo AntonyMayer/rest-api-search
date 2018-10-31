@@ -1,0 +1,14 @@
+.App {
+    &__header {
+        padding: 1rem;
+
+        @include breakpoint('md') {
+            padding: 2rem;
+        }
+    }
+
+    &__title {
+        @extend %font-large;
+        text-align: center;
+    }
+}

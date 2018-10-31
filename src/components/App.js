@@ -5,7 +5,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App__header">
-          Search UI
+          <h1 className="App__title">Search UI</h1>
         </header>
       </div>
     );
