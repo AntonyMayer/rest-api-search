@@ -1,5 +1,8 @@
 import getJWToken from './authentication';
 import { search_endpoint } from './config';
+import test_data from './test';
+
+console.log(test_data());
 
 /**
  * getData
