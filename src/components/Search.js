@@ -13,6 +13,12 @@ const selectors = {
 	label_active: 'Search__label--active',
 };
 
+/**
+ * Search
+ * Renders search input
+ * @param {Function} $props.fetchData - fetch and store results' data
+ * @param {Function} $props.resetData - reset store results & query
+ */
 class Search extends PureComponent {
 	constructor(props) {
 		super(props);
@@ -48,7 +54,6 @@ class Search extends PureComponent {
 		getData(query).then(results => fetchData({ query, results } ))
 			.catch(e => console.log(e));
 	}
-
 
 	render() {
 		return (
