@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import getData from '../globals/api';
 import { fetchData, resetData } from '../actions';
+
+getData().then(res => console.log(res)); // eslint-disable-line
 
 class Search extends Component {
 	constructor(props) {
@@ -48,8 +51,6 @@ Search.propTypes = {
 	fetchData: PropTypes.func,
 	resetData: PropTypes.func,
 };
-
-
 
 const mapStateToProps = store => ({ data: store.data });
 const mapDispatchToProps = dispatch => {
