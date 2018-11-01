@@ -1,45 +1,77 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import { getData } from '../globals/api';
 import { fetchData, resetData } from '../actions';
 
-class Search extends Component {
+// CSS Selectors for Search component
+const selectors = {
+	block: 'Search',
+	input: 'Search__input',
+	label: 'Search__label',
+	label_active: 'Search__label--active',
+};
+
+/**
+ * Search
+ * Renders search input
+ * @param {Function} $props.fetchData - fetch and store results' data
+ * @param {Function} $props.resetData - reset store results & query
+ */
+class Search extends PureComponent {
 	constructor(props) {
 		super(props);
 
+		// Create a ref for label and input to apply active modifiers on focus
 		this.label = React.createRef();
+		this.input = React.createRef();
 
 		this.handleChange = this.handleChange.bind(this);
 		this.handleFocus = this.handleFocus.bind(this);
 	}
 
+	/**
+	 * handleFocus
+	 * On focus/blur check if input is not empty and add/remove active modifiers from label
+	 * @param {boolean} predicate - true/flase on focus/blur
+	 */
 	handleFocus(predicate = true) {
-		predicate || this.props.data.query
-			? this.label.current.classList.add('Search__label--active')
-			: this.label.current.classList.remove('Search__label--active');
+		predicate || this.input.current.value
+			? this.label.current.classList.add(selectors.label_active)
+			: this.label.current.classList.remove(selectors.label_active);
 	}
 	
+	/**
+	 * handleChange
+	 * On input value change send a request to server
+	 * When response is received update store
+	 * @param {Event} event 
+	 */
 	handleChange(event) {
 		let { fetchData } = this.props;
 		let query = event.target.value;
-		fetchData(query);
+		getData(query).then(results => fetchData({ query, results } ))
+			.catch(e => console.log(e));
 	}
 
-
 	render() {
-		console.log(this.props); // eslint-disable-line
 		return (
-		<div className="Search">
-			<input className="Search__input"
-				onFocus={this.handleFocus}
-				onBlur={() => this.handleFocus(false)}
-				onChange={this.handleChange} 
-				type="text" 
-				name="search"
-				autoComplete="off" />
-			<label className="Search__label" htmlFor="search" ref={this.label}>Type here</label>
-		</div>
+			<div className={selectors.block}>
+				<input className={selectors.input}
+					onFocus={this.handleFocus}
+					onBlur={() => this.handleFocus(false)}
+					onChange={this.handleChange} 
+					type="text" 
+					name="search"
+					autoComplete="off" 
+					ref={this.input}/>
+				<label className={selectors.label} 
+					htmlFor="search" 
+					ref={this.label}>
+					Type here
+				</label>
+			</div>
 		);
 	}
 }
@@ -49,18 +81,13 @@ Search.propTypes = {
 	resetData: PropTypes.func,
 };
 
+const mapDispatchToProps = dispatch => ({
+	fetchData: payload => {
+		dispatch(fetchData(payload));
+	},
+	resetData: () => {
+		dispatch(resetData());
+	}
+});
 
-
-const mapStateToProps = store => ({ data: store.data });
-const mapDispatchToProps = dispatch => {
-	return {
-		fetchData: payload => {
-			dispatch(fetchData(payload));
-		},
-		resetData: () => {
-			dispatch(resetData());
-		}
-	};
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Search);
+export default connect(null, mapDispatchToProps)(Search);
