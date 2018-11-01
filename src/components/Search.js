@@ -11,18 +11,19 @@ class Search extends Component {
 		this.label = React.createRef();
 
 		this.handleChange = this.handleChange.bind(this);
+		this.handleFocus = this.handleFocus.bind(this);
 	}
 
-	handleFocus(predicate) {
-		predicate 
+	handleFocus(predicate = true) {
+		predicate || this.props.data.query
 			? this.label.current.classList.add('Search__label--active')
 			: this.label.current.classList.remove('Search__label--active');
 	}
 	
-	handleChange() {
-		const { fetchData } = this.props;
-		
-		fetchData();
+	handleChange(event) {
+		let { fetchData } = this.props;
+		let query = event.target.value;
+		fetchData(query);
 	}
 
 
@@ -31,12 +32,12 @@ class Search extends Component {
 		return (
 		<div className="Search">
 			<input className="Search__input"
-				onFocus={() => this.handleFocus(true)}
+				onFocus={this.handleFocus}
 				onBlur={() => this.handleFocus(false)}
 				onChange={this.handleChange} 
 				type="text" 
-				name="search" 
-				autocomplete="off" />
+				name="search"
+				autoComplete="off" />
 			<label className="Search__label" htmlFor="search" ref={this.label}>Type here</label>
 		</div>
 		);
@@ -50,17 +51,17 @@ Search.propTypes = {
 
 
 
-const mapStateToProps = store => ({ count: store.count });
+const mapStateToProps = store => ({ data: store.data });
 const mapDispatchToProps = dispatch => {
 	return {
-		fetchData: () => {
-			dispatch(fetchData());
+		fetchData: payload => {
+			dispatch(fetchData(payload));
 		},
 		filterData: () => {
 			dispatch(filterData());
 		},
-		resetData: payload => {
-			dispatch(resetData(payload));
+		resetData: () => {
+			dispatch(resetData());
 		}
 	};
 };

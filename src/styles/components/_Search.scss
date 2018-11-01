@@ -3,12 +3,20 @@
 
     &__input {
         background: transparent;
-        border: none;
-        border-bottom: 1px solid $color-white;
+        border: {
+            bottom: 1px solid $color-white;
+            left: none;
+            right: none;
+            top: none;
+        }
+        color: $color-white;
         display: block;
+        font-size: 1rem;
+        line-height: 2rem;
         outline: none;
-        height: 2rem;
+        position: relative;
         width: 100%;
+        z-index: 1;
     }
 
     &__label {
@@ -17,6 +25,7 @@
         left: 0;
         transform: translate(0, -50%);
         transition: opacity $transition, transform $transition;
+        z-index: 0;
 
         &--active {
             opacity: 0;

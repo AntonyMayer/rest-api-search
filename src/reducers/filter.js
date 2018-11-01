@@ -1,9 +1,9 @@
-export default function reducer(state = 0, action) {
+export default function reducer(state = { current_filter: null }, action) {
 	switch (action.type) {
 		case "FILTER":
 			return state = {
 				...state,
-				filter: action.payload,
+				current_filter: action.payload,
 			};
 		default: 
 			return state;

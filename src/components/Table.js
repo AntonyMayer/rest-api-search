@@ -5,11 +5,12 @@ import { connect } from 'react-redux';
  class Counter extends Component {
   render() {
     console.log(this.props); // eslint-disable-line
-    const { count } = this.props;
+    const { data } = this.props;
 
     return (
-      <div className="counter">
-        <div>{count}</div>
+      <div>
+        <div>{data.query}</div>
+        <div>{data.filter}</div>
       </div>
     );
   }
@@ -21,14 +22,8 @@ Counter.propTypes = {
 
 Counter.defaultProps = {
 	resetLabel: "RESET",
-	incrementLabel: "+",
-	decrementLabel: "-"
 };
 
-const mapStateToProps = store => {
-  return {
-    count: store.count
-  };
-};
+const mapStateToProps = store => ({ data: store.data });
 
 export default connect(mapStateToProps, null)(Counter);

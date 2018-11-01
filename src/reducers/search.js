@@ -1,11 +1,16 @@
-export default function reducer(state = 0, action) {
+export default function reducer(state = { query: null }, action) {
 	switch (action.type) {
-		case "FETCH_DATA": 
-			return state + 1;
-		case "FILTER":
-			return state - 1;
-		case "RESET":
-			return state = action.payload;
+		case 'FETCH_DATA': 
+			return {
+				...state,
+				query: action.payload,
+			};
+		case 'RESET_QUERY':
+			return {
+				...state,
+				filter: null,
+				query: null,
+			};
 		default: 
 			return state;
 	}
