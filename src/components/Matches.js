@@ -2,12 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-// CSS Selectors for Matches component
-const selectors = {
-    block: 'Matches',
-    title: 'Matches__title',
-};
-
 /**
  * Matches
  * Creates a block with Matches data related to current search
@@ -15,14 +9,7 @@ const selectors = {
  */
 const Matches = ({ data: { results } }) => {
     if (!results) return false;
-
-    let { count } = results;
-
-    return (
-        <div className={selectors.block}>
-            <h2 className={selectors.title}>Matches found: {count}</h2>
-        </div>
-    );
+    else return (<h2 className='Matches'>Matches found: {results.count}</h2>);
 };
 
 Matches.propTypes = {

@@ -2,8 +2,6 @@ import getJWToken from './authentication';
 import { search_endpoint } from './config';
 import test_data from './test';
 
-console.log(test_data());
-
 /**
  * getData
  * Get JWT token and send search request to server 
@@ -12,6 +10,7 @@ console.log(test_data());
  * @return {Object} - search results
  */
 async function getData(query, initial = true) {
+    if (test_data) return test_data();
     if (!query) return false;
     let token = await getJWToken();
     let results = await searchData(token, query, initial);

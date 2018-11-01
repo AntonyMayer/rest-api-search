@@ -1,8 +1,5 @@
 .Matches {
+    @extend %font-medium;
+    color: $color-white-transparent;
     margin-bottom: 2rem;
-
-    &__title {
-        @extend %font-medium;
-        color: $color-white-transparent;
-    }
 }
