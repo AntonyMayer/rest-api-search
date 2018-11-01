@@ -1,15 +1,20 @@
 /* Colors */
 
 $color-white: #fff;
+$color-white-transparent: rgba($color-white, .7);
 $color-green: #25c481;
 $color-blue: #3ac5e9;
+$color-gray: #777;
 
 /* Breakpoints */
 
 $md: 768px;  // min-width: 768px
 $lg: 1024px; // min-width: 1024px
 
-
 /* Fonts */
 
 $font-family: Helvetica, Arial;
+
+/* Transitions */
+
+$transition: .4s;

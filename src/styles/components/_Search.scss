@@ -1,0 +1,35 @@
+.Search {
+    position: relative;
+
+    &__input {
+        background: transparent;
+        border: {
+            bottom: 1px solid $color-white;
+            left: none;
+            right: none;
+            top: none;
+        }
+        color: $color-white;
+        display: block;
+        font-size: 1rem;
+        line-height: 2rem;
+        outline: none;
+        position: relative;
+        width: 100%;
+        z-index: 1;
+    }
+
+    &__label {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translate(0, -50%);
+        transition: opacity $transition, transform $transition;
+        z-index: 0;
+
+        &--active {
+            opacity: 0;
+            transform: translate(100%, -50%);
+        }
+    }
+}
