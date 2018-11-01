@@ -1,0 +1,14 @@
+.App {
+    padding: 1rem;
+
+    @include breakpoint('md') {
+        margin: 0 auto;
+        max-width: 60rem; // 960px
+    }
+
+    &__title {
+        @extend %font-large;
+        color: $color-white-transparent;
+        margin: 1rem 0;
+    }
+}
