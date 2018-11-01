@@ -2,10 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import getData from '../globals/api';
+import { getData, navigatePage } from '../globals/api';
 import { fetchData, resetData } from '../actions';
 
-getData().then(res => console.log(res)); // eslint-disable-line
+getData('Nation', 3).then(res => {
+	// console.log(res);
+	navigatePage(res.next);
+}); // eslint-disable-line
 
 class Search extends Component {
 	constructor(props) {

@@ -6,9 +6,6 @@ import App from './App';
 import store from './store';
 import './styles/index.scss';
 
-
-// By using <Provider />, the store will be made available for all the components in your application.
-
 render(
   <Provider store={store}>
     <App />
