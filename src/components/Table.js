@@ -4,12 +4,19 @@ import { connect } from 'react-redux';
 
  class Table extends Component {
   render() {
-    const { data } = this.props;
+    const { data: { received } } = this.props;
+    console.log(received); // eslint-disable-line
 
-    return (
+    if (!received) return false;
+    else return (
       <div>
-        <div>{data.query}</div>
-        <div>{data.filter}</div>
+        {received.results.map(record => {
+          return (
+            <div>
+              {record.id}
+            </div>
+          );
+        })}
       </div>
     );
   }
@@ -20,7 +27,7 @@ Table.propTypes = {
 };
 
 Table.defaultProps = {
-	data: {},
+	data: { received: null },
 };
 
 const mapStateToProps = store => ({ data: store.data });

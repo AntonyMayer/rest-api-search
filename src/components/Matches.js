@@ -4,12 +4,12 @@ import { connect } from 'react-redux';
 
 /**
  * Matches
- * Creates a block with Matches data related to current search
+ * Displays count for current search
  * @param {Object} $props.data.results - current search results 
  */
 const Matches = ({ data: { results } }) => {
     if (!results) return false;
-    else return (<h2 className='Matches'>Matches found: {results.count}</h2>);
+    else return <h2 className='Matches'>Matches found: {results.count}</h2>;
 };
 
 Matches.propTypes = {
