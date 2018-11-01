@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { fetchData, filterData, resetData } from '../actions';
+import { fetchData, resetData } from '../actions';
 
 class Search extends Component {
 	constructor(props) {
@@ -46,7 +46,7 @@ class Search extends Component {
 
 Search.propTypes = {
 	fetchData: PropTypes.func,
-	filterData: PropTypes.func,
+	resetData: PropTypes.func,
 };
 
 
@@ -56,9 +56,6 @@ const mapDispatchToProps = dispatch => {
 	return {
 		fetchData: payload => {
 			dispatch(fetchData(payload));
-		},
-		filterData: () => {
-			dispatch(filterData());
 		},
 		resetData: () => {
 			dispatch(resetData());

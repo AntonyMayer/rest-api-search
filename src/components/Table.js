@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
- class Counter extends Component {
+ class Table extends Component {
   render() {
-    console.log(this.props); // eslint-disable-line
     const { data } = this.props;
 
     return (
@@ -16,14 +15,14 @@ import { connect } from 'react-redux';
   }
 }
 
-Counter.propTypes = {
-  count: PropTypes.number
+Table.propTypes = {
+  data: PropTypes.object
 };
 
-Counter.defaultProps = {
-	resetLabel: "RESET",
+Table.defaultProps = {
+	data: {},
 };
 
 const mapStateToProps = store => ({ data: store.data });
 
-export default connect(mapStateToProps, null)(Counter);
+export default connect(mapStateToProps, null)(Table);
