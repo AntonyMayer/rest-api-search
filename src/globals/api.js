@@ -8,7 +8,8 @@ import { search_endpoint } from './config';
  * @param {boolean} [initial=false] - determine if request is initial 
  * @return {Object} - search results
  */
-async function getData(query = 'test', initial = true) {
+async function getData(query, initial = true) {
+    if (!query) return false;
     let token = await getJWToken();
     let results = await searchData(token, query, initial);
     console.log(results); // eslint-disable-line
