@@ -1,4 +1,5 @@
 .Search {
+    margin-bottom: 2rem;
     position: relative;
 
     &__input {
@@ -20,9 +21,9 @@
     }
 
     &__label {
+        left: 0;
         position: absolute;
         top: 50%;
-        left: 0;
         transform: translate(0, -50%);
         transition: opacity $transition, transform $transition;
         z-index: 0;
