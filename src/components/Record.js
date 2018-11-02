@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Match from './Match';
+
 const selectors = {
     block: 'Record',
-
 };
 
 const Record = ({id, study, explanation, type}) => {
@@ -12,13 +13,8 @@ const Record = ({id, study, explanation, type}) => {
         <div className={selectors.block} key={id}>
             <div>Study: {study.name}</div>
             <div>Date: {study.study_date}</div>
-            <div>Matches: {explanation.map(type => {
-                    return (
-                        <div key={type.type}>
-                            {type.display_name}
-                        </div>
-                    );
-                })}
+            <div>
+                {explanation.map(match => <Match {...match} key={match.display_name}/>)}
             </div>
             {/* <div>{type} {record[type]}</div> */}
         </div>
