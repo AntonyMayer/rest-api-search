@@ -1,5 +1,6 @@
 import getJWToken from './authentication';
 import { search_endpoint } from './config';
+// import test_data from './test';
 
 /**
  * getData
@@ -9,6 +10,7 @@ import { search_endpoint } from './config';
  * @return {Object} - search results
  */
 async function getData(query, initial = true) {
+    // if (test_data) return test_data();
     if (!query) return false;
     let token = await getJWToken();
     let results = await searchData(token, query, initial);
