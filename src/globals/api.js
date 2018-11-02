@@ -1,5 +1,5 @@
 import getJWToken from './authentication';
-import { SEARCH_ENDPOINT } from './config';
+import { SEARCH_ENDPOINT, RESULTS_PER_PAGE } from './config';
 
 /**
  * getData
@@ -27,7 +27,7 @@ async function getData(query, initial = true) {
  */
 const searchData = (token, query, initial) => {
     let search = initial
-        ? `${SEARCH_ENDPOINT}?query=${query}&type=question&group_duplicates=question&page_size=25&page=1`
+        ? `${SEARCH_ENDPOINT}?query=${query}&type=question&group_duplicates=question&page_size=${RESULTS_PER_PAGE}&page=1`
         : query;
 
     return fetch(search, {
