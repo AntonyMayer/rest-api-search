@@ -1,13 +1,30 @@
 .Record {
     animation: appear .8s;
     animation-fill-mode: forwards;
-    margin-bottom: 1rem;
     opacity: 0;
+    padding-bottom: 1rem;
+    transition: background-color $transition;
+
+    &:hover {
+        @include breakpoint('lg') {
+            background-color: rgba($color-black-transparent, .1);
+        }
+    }
     
     // abusing hardcoded amount of results per page
     @for $i from 1 through 25 {
         &:nth-of-type(#{$i}) {
             animation-delay: #{$i % 10 * .1s};
+        }
+    }
+
+    &__title {
+        display: none;
+        
+        @include breakpoint('md') {
+            display: block;
+            font-weight: bold;
+            padding: .5rem .75rem;
         }
     }
 
@@ -50,11 +67,6 @@
         font-weight: bold;
         margin-left: .375rem;
         vertical-align: middle;
-    }
-
-    &__title {
-        font-weight: bold;
-        padding: .5rem .75rem .25rem;
     }
 }
 

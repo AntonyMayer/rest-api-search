@@ -2,8 +2,8 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { getData } from '../globals/api';
-import { fetchData, resetData } from '../actions';
+import { fetchData } from '../globals/api';
+import { storeData } from '../actions';
 
 // CSS Selectors for Search component
 const selectors = {
@@ -16,7 +16,7 @@ const selectors = {
 /**
  * Search
  * Renders search input
- * @param {Function} $props.fetchData - fetch and store results' data
+ * @param {Function} $props.storeData - fetch and store results' data
  * @param {Function} $props.resetData - reset store results & query
  */
 class Search extends PureComponent {
@@ -49,9 +49,9 @@ class Search extends PureComponent {
 	 * @param {Event} event 
 	 */
 	handleChange(event) {
-		let { fetchData } = this.props;
+		let { storeData } = this.props;
 		let query = event.target.value;
-		getData(query).then(results => fetchData({ query, results } ))
+		fetchData(query).then(results => storeData({ query, results } ))
 			.catch(e => console.log(e));
 	}
 
@@ -77,16 +77,13 @@ class Search extends PureComponent {
 }
 
 Search.propTypes = {
-	fetchData: PropTypes.func,
+	storeData: PropTypes.func,
 	resetData: PropTypes.func,
 };
 
 const mapDispatchToProps = dispatch => ({
-	fetchData: payload => {
-		dispatch(fetchData(payload));
-	},
-	resetData: () => {
-		dispatch(resetData());
+	storeData: payload => {
+		dispatch(storeData(payload));
 	}
 });
 
