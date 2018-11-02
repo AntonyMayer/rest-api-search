@@ -2,34 +2,27 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
- class Table extends Component {
+ class Navigation extends Component {
   render() {
     const { data: { received } } = this.props;
-    console.log(received); // eslint-disable-line
 
     if (!received) return false;
     else return (
       <div>
-        {received.results.map(record => {
-          return (
-            <div key={record.id}>
-              {record.id}
-            </div>
-          );
-        })}
+          {received.results.length}
       </div>
     );
   }
 }
 
-Table.propTypes = {
+Navigation.propTypes = {
   data: PropTypes.object
 };
 
-Table.defaultProps = {
+Navigation.defaultProps = {
 	data: { received: null },
 };
 
 const mapStateToProps = store => ({ data: store.data });
 
-export default connect(mapStateToProps, null)(Table);
+export default connect(mapStateToProps, null)(Navigation);

@@ -2,6 +2,7 @@ import React from 'react';
 import Search from './components/Search';
 import Matches from './components/Matches';
 import Table from './components/Table';
+import Navigation from './components/Navigation';
 
 const App = () => (
 	<div className="App">
@@ -9,6 +10,7 @@ const App = () => (
 		<Search />
 		<Matches />
 		<Table />
+		<Navigation />
 	</div>
 );
 
