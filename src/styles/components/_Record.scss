@@ -1,3 +1,70 @@
 .Record {
+    animation: appear .8s;
+    animation-fill-mode: forwards;
     margin-bottom: 1rem;
+    opacity: 0;
+    
+    // abusing hardcoded amount of results per page
+    @for $i from 1 through 25 {
+        &:nth-of-type(#{$i}) {
+            animation-delay: #{$i % 10 * .1s};
+        }
+    }
+
+    &__row {
+        display: flex;
+
+        &--header {
+            background-color: $color-white-transparent;
+            color: $color-gray;
+            margin-bottom: .5rem;
+        }
+
+        &--date {
+            @extend %font-small;
+            color: $color-white-transparent;
+        }
+    }
+
+    &__cell {
+        flex: 1 1 auto;
+        padding: .5rem .75rem;
+
+        &--label {
+            flex: 0 1 5rem;
+        }
+
+        &--link {
+            transition: color $transition;
+
+            &:hover {
+                color: $color-green;
+            }
+        }
+    }
+
+    &__icon {
+        color: $color-blue;
+        display: inline-block;
+        font-size: .75rem;
+        font-weight: bold;
+        margin-left: .375rem;
+        vertical-align: middle;
+    }
+
+    &__title {
+        font-weight: bold;
+        padding: .5rem .75rem .25rem;
+    }
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+        transform: translateX(4rem);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }

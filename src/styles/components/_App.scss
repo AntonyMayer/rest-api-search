@@ -4,6 +4,7 @@
     @include breakpoint('md') {
         margin: 0 auto;
         max-width: 60rem; // 960px
+        padding: 1rem 2rem;
     }
 
     &__title {
