@@ -55,7 +55,9 @@
             transition: color $transition;
 
             &:hover {
-                color: $color-green;
+                @include breakpoint('md') {
+                    color: $color-green;
+                }
             }
         }
     }

@@ -17,6 +17,7 @@ const selectors = {
  * Navigation
  * Displays page navigation if needed
  * @param {Object} $props.received - search results 
+ * @param {Function} $props.storeData - fetch and store results' data
  */
 class Navigation extends Component {
 	constructor(props) {
@@ -80,7 +81,8 @@ class Navigation extends Component {
 };
 
 Navigation.propTypes = {
-	data: PropTypes.object
+	received: PropTypes.object,
+	storeData: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = store => ({ received: store.data.received });

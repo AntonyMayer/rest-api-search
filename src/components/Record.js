@@ -48,9 +48,9 @@ const Record = ({id, study, explanation}) => (
 );
 
 Record.propTypes = {
-    id: PropTypes.string,
-    study: PropTypes.object,
-    explanation: PropTypes.array,
+    id: PropTypes.string.isRequired,
+    study: PropTypes.object.isRequired,
+    explanation: PropTypes.array.isRequired,
 };
 
 export default Record;

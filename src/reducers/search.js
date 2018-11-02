@@ -1,4 +1,4 @@
-export default function data(state = { query: null, received: null }, action) {
+export default function data(state = { query: null, received: {} }, action) {
 	switch (action.type) {
 		case 'FETCH_DATA': 
 			return {
