@@ -4,7 +4,6 @@ import { Provider } from 'react-redux';
 
 import App from './App';
 import store from './store';
-import './styles/index.scss';
 
 it('renders without crashing', () => {
 	const div = document.createElement('div');
