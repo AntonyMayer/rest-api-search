@@ -8,6 +8,13 @@ const selectors = {
     block: 'Record',
 };
 
+/**
+ * Record
+ * Display a record that matches search params
+ * @param {string} $props.id - record id
+ * @param {Object} $props.study - info on matched study
+ * @param {Array} $props.explanation - list of matches
+ */
 const Record = ({id, study, explanation}) => {
     return (
         <div className={selectors.block} key={id}>
@@ -22,8 +29,8 @@ const Record = ({id, study, explanation}) => {
 
 Record.propTypes = {
     id: PropTypes.string,
-    explanation: PropTypes.array,
     study: PropTypes.object,
+    explanation: PropTypes.array,
 };
 
 export default Record;

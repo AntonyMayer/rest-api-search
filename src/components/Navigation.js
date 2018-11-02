@@ -13,39 +13,53 @@ const selectors = {
 	page: 'Navigation__page',
 };
 
+/**
+ * Navigation
+ * Displays page navigation if needed
+ * @param {Object} $props.received - search results 
+ */
 class Navigation extends Component {
 	constructor(props) {
 		super(props);
-
-		this.state = { page: 1 };
-
 		this.navigate = this.navigate.bind(this);
 		this.printPage = this.printPage.bind(this);
 	}
 
+	/**
+	 * navigate
+	 * Navigate to next or previous page based on direction
+	 * @param {string} [direction=next] - accepts: next, previous
+	 */
 	navigate(direction = 'next') {
 		let { fetchData } = this.props;
-		let { page } = this.state;
 		let query = this.props.received[direction];
 
-		page = direction === 'next' ? ++page : --page;
-
-		navigatePage(query).then(results => {
-				this.setState({ page })
-				fetchData({ query, results });
-			})
+		// send request to server and store results
+		navigatePage(query).then(results => fetchData({ query, results }))
 			.catch(e => console.log(e));
 	}
 
+	/**
+	 * printPage
+	 * Returns string to display pagination 
+	 * @returns {string}
+	 */
 	printPage() {
-		let pages_total = Math.ceil(this.props.received.count / RESULTS_PER_PAGE);
+		let { next, count } = this.props.received;
+		// calculate total pages
+		let pages_total = Math.ceil(count / RESULTS_PER_PAGE);
+		// extract next page index from query and decrement it to get current ¯\_(ツ)_/¯
+		let next_index = next 
+			? --next.match(/page=\d+/)[0].match(/\d+/)[0]
+			: pages_total;
 
-		return `${this.state.page} / ${pages_total}`;
+		return `${next_index} / ${pages_total}`;
 	}
 	
 	render() {
 		let { received } = this.props;
 		
+		// check if there are any results and navigation buttons are required
 		if (!received || !(received.previous || received.next) ) return false;
 		else return (
 			<div className={selectors.block}>
