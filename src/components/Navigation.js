@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { navigatePage } from '../globals/api';
-import { fetchData } from '../actions';
+import { storeData } from '../actions';
 import { RESULTS_PER_PAGE } from '../globals/config';
 
 // Class names for Record component
@@ -31,11 +31,11 @@ class Navigation extends Component {
 	 * @param {string} [direction=next] - accepts: next, previous
 	 */
 	navigate(direction = 'next') {
-		let { fetchData } = this.props;
+		let { storeData } = this.props;
 		let query = this.props.received[direction];
 
 		// send request to server and store results
-		navigatePage(query).then(results => fetchData({ query, results }))
+		navigatePage(query).then(results => storeData({ query, results }))
 			.catch(e => console.log(e));
 	}
 
@@ -86,8 +86,8 @@ Navigation.propTypes = {
 const mapStateToProps = store => ({ received: store.data.received });
 
 const mapDispatchToProps = dispatch => ({
-	fetchData: payload => {
-		dispatch(fetchData(payload));
+	storeData: payload => {
+		dispatch(storeData(payload));
 	}
 });
 

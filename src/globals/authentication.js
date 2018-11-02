@@ -19,6 +19,7 @@ async function getJWToken() {
     else {
         token = await getNewToken();
         setSessionToken(token.JWT);
+
         return token.JWT;
     }
 }
@@ -32,7 +33,7 @@ const getNewToken = () => fetch(AUTH_ENDPOINT, {
     method: 'POST',
     body: formData
 }).then(response => response.json())
-  .catch(e => console.log(e)); // eslint-disable-line)
+    .catch(e => console.log(e)); // eslint-disable-line)
 
 /**
  * setSessionToken
