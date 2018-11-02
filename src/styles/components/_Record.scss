@@ -1,8 +1,15 @@
 .Record {
     animation: appear .8s;
     animation-fill-mode: forwards;
-    margin-bottom: 1rem;
     opacity: 0;
+    padding-bottom: 1rem;
+    transition: background-color $transition;
+
+    &:hover {
+        @include breakpoint('lg') {
+            background-color: rgba($color-black-transparent, .1);
+        }
+    }
     
     // abusing hardcoded amount of results per page
     @for $i from 1 through 25 {

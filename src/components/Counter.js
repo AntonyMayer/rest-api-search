@@ -4,22 +4,18 @@ import { connect } from 'react-redux';
 
 /**
  * Counter
- * Displays count for current search
+ * Displays counter for current search
  * @param {Object} $props.data.received - current search results 
  */
-const Counter = ({ data: { received } }) => {
+const Counter = ({ received }) => {
     if (!received) return false;
     else return <h2 className='Counter'>Matches found: {received.count}</h2>;
 };
 
 Counter.propTypes = {
-    data: PropTypes.object
-};
-  
-Counter.defaultProps = {
-    data: {},
+    received: PropTypes.object
 };
 
-const mapStateToProps = store => ({ data: store.data });
+const mapStateToProps = store => ({ received: store.data.received });
 
 export default connect(mapStateToProps, null)(Counter);

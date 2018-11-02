@@ -40,7 +40,9 @@ const Record = ({id, study, explanation}) => (
             <div className={selectors.cell_label}>Date</div>
             <div className={selectors.cell}>{study.study_date}</div>
         </div>
-        <h2 className={selectors.title}>Matches in</h2>
+        {explanation.length > 0 && 
+            <h2 className={selectors.title}>Matches in</h2>
+        }
         {explanation.map(match => <Match {...match} key={match.display_name}/>)}
     </div>
 );
