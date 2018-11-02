@@ -14,9 +14,15 @@
     &__row {
         display: flex;
 
-        &--bg-white {
+        &--header {
             background-color: $color-white-transparent;
             color: $color-gray;
+            margin-bottom: .5rem;
+        }
+
+        &--date {
+            @extend %font-small;
+            color: $color-white-transparent;
         }
     }
 
@@ -38,9 +44,17 @@
     }
 
     &__icon {
-        height: .75rem;
-        margin-left: .5rem;
+        color: $color-blue;
+        display: inline-block;
+        font-size: .75rem;
+        font-weight: bold;
+        margin-left: .375rem;
         vertical-align: middle;
+    }
+
+    &__title {
+        font-weight: bold;
+        padding: .5rem .75rem .25rem;
     }
 }
 

@@ -1,3 +1,32 @@
 .Match {
     
+    @include breakpoint('md') {
+        display: flex;
+    }
+
+    &__group {
+        flex: 1 1 30%;
+        font-weight: bold;
+        padding: .5rem .75rem;
+
+        @include breakpoint('md') {
+            font-weight: normal;
+            padding-left: 2rem;
+        }
+    }
+
+    &__list {
+        flex: 1 1 70%;
+        list-style-type: decimal;
+        margin-left: 1rem;
+        padding: .5rem .75rem;
+
+        @include breakpoint('md') {
+            margin: 0;
+        }
+    }
+
+    &__item {
+        padding-bottom: .5rem;
+    }
 }

@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 
 // Class names for Matches component
 const selectors = {
-    block: 'Matches',
+    block: 'Match',
+    group: 'Match__group',
+    list: 'Match__list',
+    item: 'Match__item',
 };
 
 /**
@@ -14,9 +17,10 @@ const selectors = {
  */
 const Matches = ({ display_name, matches }) => (
     <div className={selectors.block} key={display_name}>
-        <div>Matches in <strong>{display_name}</strong>:</div>
-        <ul>
+        <div className={selectors.group}>{display_name}</div>
+        <ul className={selectors.list}>
             {matches.map(match => <li 
+                className={selectors.item}
                 key={match}
                 dangerouslySetInnerHTML={{__html: match}} />)}
         </ul>
