@@ -1,10 +1,10 @@
-import { auth_endpoint, master } from './config';
+import { AUTH_ENDPOINT, MASTER } from './config';
 
 // Create form-data with proper credentials 
 const formData = new FormData();
 
-formData.append('username', master.username);
-formData.append('password', master.password);
+formData.append('username', MASTER.username);
+formData.append('password', MASTER.password);
 
 /**
  * getJWToken
@@ -28,7 +28,7 @@ async function getJWToken() {
  * Requests a new token from server
  * @return {string} - token
  */
-const getNewToken = () => fetch(auth_endpoint, {
+const getNewToken = () => fetch(AUTH_ENDPOINT, {
     method: 'POST',
     body: formData
 }).then(response => response.json())

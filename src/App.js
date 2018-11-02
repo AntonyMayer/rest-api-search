@@ -9,6 +9,7 @@ const App = () => (
 		<h1 className="App__title">Search</h1>
 		<Search />
 		<Counter />
+		<Navigation />
 		<Table />
 		<Navigation />
 	</div>

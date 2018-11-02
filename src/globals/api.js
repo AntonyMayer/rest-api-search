@@ -1,6 +1,5 @@
 import getJWToken from './authentication';
-import { search_endpoint } from './config';
-// import test_data from './test';
+import { SEARCH_ENDPOINT, RESULTS_PER_PAGE } from './config';
 
 /**
  * getData
@@ -10,8 +9,7 @@ import { search_endpoint } from './config';
  * @return {Object} - search results
  */
 async function getData(query, initial = true) {
-    // if (test_data) return test_data();
-    if (!query) return false;
+    if (!query) return null;
     let token = await getJWToken();
     let results = await searchData(token, query, initial);
     console.log(results); // eslint-disable-line
@@ -29,7 +27,7 @@ async function getData(query, initial = true) {
  */
 const searchData = (token, query, initial) => {
     let search = initial
-        ? `${search_endpoint}?query=${query}&type=question&group_duplicates=question&page_size=25&page=1`
+        ? `${SEARCH_ENDPOINT}?query=${query}&type=question&group_duplicates=question&page_size=${RESULTS_PER_PAGE}&page=1`
         : query;
 
     return fetch(search, {

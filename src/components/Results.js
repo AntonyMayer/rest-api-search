@@ -4,8 +4,12 @@ import { connect } from 'react-redux';
 
 import Record from './Record';
 
-const Results = ({ data: { received } }) => {
-	console.log(received); // eslint-disable-line
+/**
+ * Results
+ * Generate list of records from results
+ * @param {Object} $props.received - search results 
+ */
+const Results = ({ received }) => {
 	if (!received) return false;
 	else return (
 		<div className='Results'>
@@ -15,13 +19,9 @@ const Results = ({ data: { received } }) => {
 };
 
 Results.propTypes = {
-  data: PropTypes.object
+	received: PropTypes.object
 };
 
-Results.defaultProps = {
-	data: { received: null },
-};
-
-const mapStateToProps = store => ({ data: store.data });
+const mapStateToProps = store => ({ received: store.data.received });
 
 export default connect(mapStateToProps, null)(Results);
