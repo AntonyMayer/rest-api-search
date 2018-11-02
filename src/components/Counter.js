@@ -3,23 +3,23 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 /**
- * Matches
+ * Counter
  * Displays count for current search
  * @param {Object} $props.data.received - current search results 
  */
-const Matches = ({ data: { received } }) => {
+const Counter = ({ data: { received } }) => {
     if (!received) return false;
-    else return <h2 className='Matches'>Matches found: {received.count}</h2>;
+    else return <h2 className='Counter'>Matches found: {received.count}</h2>;
 };
 
-Matches.propTypes = {
+Counter.propTypes = {
     data: PropTypes.object
 };
   
-Matches.defaultProps = {
+Counter.defaultProps = {
     data: {},
 };
 
 const mapStateToProps = store => ({ data: store.data });
 
-export default connect(mapStateToProps, null)(Matches);
+export default connect(mapStateToProps, null)(Counter);
