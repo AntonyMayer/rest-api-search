@@ -1,0 +1,16 @@
+.Navigation {
+    margin-bottom: 1.5rem;
+    
+    &__btn {
+        color: $color-white-transparent;
+        cursor: pointer;
+        display: inline-block;
+        font-weight: bold;
+        margin-right: 1rem;
+        transition: color $transition;
+
+        &:hover {
+            color: $color-white;
+        }
+    }
+}
