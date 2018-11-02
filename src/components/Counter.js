@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 /**
  * Counter
  * Displays counter for current search
- * @param {Object} $props.data.received - current search results 
+ * @param {Object} $props.received - current search results 
  */
 const Counter = ({ received }) => {
     if (!received) return false;

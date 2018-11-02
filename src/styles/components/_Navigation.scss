@@ -10,7 +10,9 @@
         transition: color $transition;
 
         &:hover {
-            color: $color-white;
+            @include breakpoint('md') {
+                color: $color-white;
+            }
         }
     }
 

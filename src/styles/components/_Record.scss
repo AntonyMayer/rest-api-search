@@ -18,6 +18,16 @@
         }
     }
 
+    &__title {
+        display: none;
+        
+        @include breakpoint('md') {
+            display: block;
+            font-weight: bold;
+            padding: .5rem .75rem;
+        }
+    }
+
     &__row {
         display: flex;
 
@@ -57,11 +67,6 @@
         font-weight: bold;
         margin-left: .375rem;
         vertical-align: middle;
-    }
-
-    &__title {
-        font-weight: bold;
-        padding: .5rem .75rem;
     }
 }
 
