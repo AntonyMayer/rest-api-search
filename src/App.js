@@ -5,8 +5,8 @@ import Table from './components/Results';
 import Navigation from './components/Navigation';
 
 const App = () => (
-	<div className="App">
-		<h1 className="App__title">Search</h1>
+	<div className='App'>
+		<h1 className='App__title'>Search</h1>
 		<Search />
 		<Counter />
 		<Navigation />

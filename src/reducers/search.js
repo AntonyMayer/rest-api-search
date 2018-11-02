@@ -6,12 +6,6 @@ export default function data(state = { query: null, received: null }, action) {
 				query: action.payload.query,
 				received: action.payload.results,
 			};
-		case 'RESET_QUERY':
-			return {
-				...state,
-				query: null,
-				received: null,
-			};
 		default: 
 			return state;
 	}

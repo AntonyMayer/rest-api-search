@@ -17,7 +17,6 @@ const selectors = {
  * Search
  * Renders search input
  * @param {Function} $props.storeData - fetch and store results' data
- * @param {Function} $props.resetData - reset store results & query
  */
 class Search extends PureComponent {
 	constructor(props) {
@@ -51,6 +50,8 @@ class Search extends PureComponent {
 	handleChange(event) {
 		let { storeData } = this.props;
 		let query = event.target.value;
+
+		// send request to server and store results
 		fetchData(query).then(results => storeData({ query, results } ))
 			.catch(e => console.log(e));
 	}
@@ -62,12 +63,12 @@ class Search extends PureComponent {
 					onFocus={this.handleFocus}
 					onBlur={() => this.handleFocus(false)}
 					onChange={this.handleChange} 
-					type="text" 
-					name="search"
-					autoComplete="off" 
+					type='text' 
+					name='search'
+					autoComplete='off' 
 					ref={this.input}/>
 				<label className={selectors.label} 
-					htmlFor="search" 
+					htmlFor='search' 
 					ref={this.label}>
 					Type here
 				</label>
@@ -77,8 +78,7 @@ class Search extends PureComponent {
 }
 
 Search.propTypes = {
-	storeData: PropTypes.func,
-	resetData: PropTypes.func,
+	storeData: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = dispatch => ({
