@@ -1,3 +1,56 @@
 .Record {
+    animation: appear .8s;
+    animation-fill-mode: forwards;
     margin-bottom: 1rem;
+    opacity: 0;
+    
+    // abusing hardcoded amount of results per page
+    @for $i from 1 through 25 {
+        &:nth-of-type(#{$i}) {
+            animation-delay: #{$i % 10 * .1s};
+        }
+    }
+
+    &__row {
+        display: flex;
+
+        &--bg-white {
+            background-color: $color-white-transparent;
+            color: $color-gray;
+        }
+    }
+
+    &__cell {
+        flex: 1 1 auto;
+        padding: .5rem .75rem;
+
+        &--label {
+            flex: 0 1 5rem;
+        }
+
+        &--link {
+            transition: color $transition;
+
+            &:hover {
+                color: $color-green;
+            }
+        }
+    }
+
+    &__icon {
+        height: .75rem;
+        margin-left: .5rem;
+        vertical-align: middle;
+    }
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+        transform: translateX(4rem);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }

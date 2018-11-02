@@ -6,6 +6,13 @@ import Match from './Match';
 // Class names for Record component
 const selectors = {
     block: 'Record',
+    row: 'Record__row',
+    row_white: 'Record__row Record__row--bg-white',
+    cell: 'Record__cell',
+    cell_label: 'Record__cell Record__cell--label',
+    cell_link: 'Record__cell Record__cell--link',
+    link: 'Record__link',
+    icon: 'Record__icon',
 };
 
 /**
@@ -18,8 +25,13 @@ const selectors = {
 const Record = ({id, study, explanation}) => {
     return (
         <div className={selectors.block} key={id}>
-            <div>Study: {study.name}</div>
-            <div>Date: {study.study_date}</div>
+            <div className={selectors.row_white}>
+                <div className={selectors.cell_label}>Study</div> 
+                <a className={selectors.cell_link} href={study.link}>
+                    {study.name} &#8192;
+                </a>             
+            </div>
+            <div>Date {study.study_date}</div>
             <div>
                 {explanation.map(match => <Match {...match} key={match.display_name}/>)}
             </div>
