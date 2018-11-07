@@ -58,21 +58,24 @@ class Navigation extends Component {
 	}
 	
 	render() {
-		let { received } = this.props;
+		let { received, 
+			received: { previous }, 
+			received: { next }
+		} = this.props;
 		
 		// check if there are any results and navigation buttons are required
-		if (!received || !(received.previous || received.next) ) return false;
+		if (!received || !(previous || next) ) return false;
 		else return (
 			<div className={selectors.block}>
 				<div className={selectors.btn} 
-					onClick={() => received.previous && this.navigate('previous')}>
+					onClick={() => previous && this.navigate('previous')}>
 					&#9668; Back
 				</div>
 				<div className={selectors.page}>
 					{this.printPage()}
 				</div>
 				<div className={selectors.btn} 
-					onClick={() => received.next && this.navigate('next')}>
+					onClick={() => next && this.navigate('next')}>
 					Next &#9658;
 				</div>
 			</div>
